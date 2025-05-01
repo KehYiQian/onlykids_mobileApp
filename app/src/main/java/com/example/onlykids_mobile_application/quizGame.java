@@ -135,6 +135,25 @@ public class quizGame extends AppCompatActivity {
         if (currentQuestionIndex >= quizList.size()) {
             timerHandler.removeCallbacks(updateTimerRunnable);
 
+            String difficulty;
+            if (currentLevel == 1) {
+                difficulty = "EASY";
+            } else if (currentLevel == 2) {
+                difficulty = "MEDIUM";
+            } else {
+                difficulty = "HARD";
+            }
+            // Save quiz result to SQLite
+            QuizResultEntity result = new QuizResultEntity(
+                    topic,
+                    correctAnswers,
+                    difficulty,
+                    0
+            );
+            QuizResultDatabase.getInstance(getApplicationContext())
+                    .quizResultDao()
+                    .insert(result);
+
             Intent intent = new Intent(quizGame.this, quizGame_result.class);
             intent.putExtra("score", correctAnswers);
             intent.putExtra("total", totalAnswers);
