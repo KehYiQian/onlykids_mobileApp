@@ -85,13 +85,13 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, Mistake_memo.class);
                         startActivity(intent);
                     });
-            //
-            //        btnReport.setOnClickListener(v -> {
-            //            v.startAnimation(scaleAnimation);
-            //            Intent intent = new Intent(MainActivity.this, PerformanceReportActivity.class);
-            //            startActivity(intent);
-            //        });
-            //
+
+                    btnReport.setOnClickListener(v -> {
+                        v.startAnimation(scaleAnimation);
+                        Intent intent = new Intent(MainActivity.this, PerformanceReportActivity.class);
+                        startActivity(intent);
+                    });
+
             btnVideo.setOnClickListener(v -> {
                 v.startAnimation(scaleAnimation);
                 Intent intent = new Intent(MainActivity.this, VideoSearchActivity.class);

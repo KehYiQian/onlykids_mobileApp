@@ -15,22 +15,27 @@
         android:theme="@style/Theme.Onlykids_mobile_application"
         tools:targetApi="31">
         <activity
+            android:name=".PerformanceReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".Splash_screen"
-            android:exported="true" >
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                    <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".preclass_question"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".Retry_mistake_memo"
@@ -43,19 +48,13 @@
             android:exported="false" />
         <activity
             android:name=".start_quiz"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".quizGame"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".chatRoom"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="false">
@@ -66,11 +65,10 @@
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
-        </activity>
-<!--        <activity android:name=".PreClassActivity" />-->
-<!--        <activity android:name=".NotesActivity" />-->
-<!--        <activity android:name=".MistakeMemoActivity" />-->
-<!--        <activity android:name=".PerformanceReportActivity" />-->
+        </activity> <!-- <activity android:name=".PreClassActivity" /> -->
+        <!-- <activity android:name=".NotesActivity" /> -->
+        <!-- <activity android:name=".MistakeMemoActivity" /> -->
+        <!-- <activity android:name=".PerformanceReportActivity" /> -->
         <activity android:name=".VideoSearchActivity" />
     </application>
 
