@@ -25,7 +25,7 @@
         </activity>
         <activity
             android:name=".preclass_question"
-            android:exported="true">
+            android:exported="false">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
@@ -43,13 +43,19 @@
             android:exported="false" />
         <activity
             android:name=".start_quiz"
-            android:exported="false"></activity>
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".quizGame"
-            android:exported="false"></activity>
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".chatRoom"
-            android:exported="false"></activity>
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="false">

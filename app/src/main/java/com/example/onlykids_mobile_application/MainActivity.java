@@ -3,6 +3,7 @@ package com.example.onlykids_mobile_application;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,74 +24,85 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        // Initialize views
-        tvAppTitle = findViewById(R.id.tv_app_title);
-        btnStart = findViewById(R.id.btn_start);
-        btnNotes = findViewById(R.id.btn_notes);
-        btnMistakeMemo = findViewById(R.id.btn_mistake_memo);
-        btnReport = findViewById(R.id.btn_report);
-        btnVideo = findViewById(R.id.btn_video);
-        btnExit = findViewById(R.id.btn_exit);
 
-        // Initialize MediaPlayer for background music
-        mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
-        mediaPlayer.setLooping(true); // Set the music to loop indefinitely
-        mediaPlayer.setVolume(0.8f, 0.8f);
+        SharedPreferences prefs = getSharedPreferences("OnlyKidsPrefs", MODE_PRIVATE);
+        boolean isFirstTime = prefs.getBoolean("isFirstTime", true);
 
-        // Load animations
-        Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        Animation popInAnimation = AnimationUtils.loadAnimation(this, R.anim.pop_in);
-        Animation scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.scale_button);
-
-        // Apply fade-in animation to the title
-        tvAppTitle.startAnimation(fadeInAnimation);
-
-        // Apply pop-in animation to buttons with a staggered delay
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(() -> btnStart.startAnimation(popInAnimation), 100);
-        handler.postDelayed(() -> btnNotes.startAnimation(popInAnimation), 200);
-        handler.postDelayed(() -> btnMistakeMemo.startAnimation(popInAnimation), 300);
-        handler.postDelayed(() -> btnReport.startAnimation(popInAnimation), 400);
-        handler.postDelayed(() -> btnVideo.startAnimation(popInAnimation), 500);
-        handler.postDelayed(() -> btnExit.startAnimation(popInAnimation), 600);
-
-        // Set click listeners with scale animation
-        //        btnStart.setOnClickListener(v -> {
-        //            v.startAnimation(scaleAnimation);
-        //            Intent intent = new Intent(MainActivity.this, PreClassActivity.class);
-        //            startActivity(intent);
-        //        });
-        //
-        //        btnNotes.setOnClickListener(v -> {
-        //            v.startAnimation(scaleAnimation);
-        //            Intent intent = new Intent(MainActivity.this, NotesActivity.class);
-        //            startActivity(intent);
-        //        });
-        //
-        //        btnMistakeMemo.setOnClickListener(v -> {
-        //            v.startAnimation(scaleAnimation);
-        //            Intent intent = new Intent(MainActivity.this, MistakeMemoActivity.class);
-        //            startActivity(intent);
-        //        });
-        //
-        //        btnReport.setOnClickListener(v -> {
-        //            v.startAnimation(scaleAnimation);
-        //            Intent intent = new Intent(MainActivity.this, PerformanceReportActivity.class);
-        //            startActivity(intent);
-        //        });
-        //
-        btnVideo.setOnClickListener(v -> {
-            v.startAnimation(scaleAnimation);
-            Intent intent = new Intent(MainActivity.this, VideoSearchActivity.class);
-            startActivity(intent);
-        });
-
-        btnExit.setOnClickListener(v -> {
-            v.startAnimation(scaleAnimation);
+        // DEBUG: Force reset first-time flag
+//        prefs.edit().putBoolean("isFirstTime", true).apply();
+//        boolean isFirstTime = true;
+        if (isFirstTime) {
+            startActivity(new Intent(this, preclass_question.class));
             finish();
-        });
+        } else {
+            setContentView(R.layout.activity_main);
+            // Initialize views
+            tvAppTitle = findViewById(R.id.tv_app_title);
+            btnStart = findViewById(R.id.btn_start);
+            btnNotes = findViewById(R.id.btn_notes);
+            btnMistakeMemo = findViewById(R.id.btn_mistake_memo);
+            btnReport = findViewById(R.id.btn_report);
+            btnVideo = findViewById(R.id.btn_video);
+            btnExit = findViewById(R.id.btn_exit);
+
+            // Initialize MediaPlayer for background music
+            mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
+            mediaPlayer.setLooping(true); // Set the music to loop indefinitely
+            mediaPlayer.setVolume(0.8f, 0.8f);
+
+            // Load animations
+            Animation fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+            Animation popInAnimation = AnimationUtils.loadAnimation(this, R.anim.pop_in);
+            Animation scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.scale_button);
+
+            // Apply fade-in animation to the title
+            tvAppTitle.startAnimation(fadeInAnimation);
+
+            // Apply pop-in animation to buttons with a staggered delay
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.postDelayed(() -> btnStart.startAnimation(popInAnimation), 100);
+            handler.postDelayed(() -> btnNotes.startAnimation(popInAnimation), 200);
+            handler.postDelayed(() -> btnMistakeMemo.startAnimation(popInAnimation), 300);
+            handler.postDelayed(() -> btnReport.startAnimation(popInAnimation), 400);
+            handler.postDelayed(() -> btnVideo.startAnimation(popInAnimation), 500);
+            handler.postDelayed(() -> btnExit.startAnimation(popInAnimation), 600);
+            // Set click listeners with scale animation
+                    btnStart.setOnClickListener(v -> {
+                        v.startAnimation(scaleAnimation);
+                        Intent intent = new Intent(MainActivity.this, chatRoom.class);
+                        startActivity(intent);
+                    });
+            //
+            //        btnNotes.setOnClickListener(v -> {
+            //            v.startAnimation(scaleAnimation);
+            //            Intent intent = new Intent(MainActivity.this, NotesActivity.class);
+            //            startActivity(intent);
+            //        });
+            //
+                    btnMistakeMemo.setOnClickListener(v -> {
+                        v.startAnimation(scaleAnimation);
+                        Intent intent = new Intent(MainActivity.this, Mistake_memo.class);
+                        startActivity(intent);
+                    });
+            //
+            //        btnReport.setOnClickListener(v -> {
+            //            v.startAnimation(scaleAnimation);
+            //            Intent intent = new Intent(MainActivity.this, PerformanceReportActivity.class);
+            //            startActivity(intent);
+            //        });
+            //
+            btnVideo.setOnClickListener(v -> {
+                v.startAnimation(scaleAnimation);
+                Intent intent = new Intent(MainActivity.this, VideoSearchActivity.class);
+                startActivity(intent);
+            });
+
+            btnExit.setOnClickListener(v -> {
+                v.startAnimation(scaleAnimation);
+                finish();
+            });
+        }
     }
 
     @Override
