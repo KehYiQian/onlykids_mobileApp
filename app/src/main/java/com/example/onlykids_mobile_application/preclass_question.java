@@ -23,15 +23,14 @@ public class preclass_question extends AppCompatActivity {
         // Check if entering with the first time
         SharedPreferences prefs = getSharedPreferences("OnlyKidsPrefs", MODE_PRIVATE);
         boolean isFirstTime = prefs.getBoolean("isFirstTime", true);
+        boolean isEditProfile = prefs.getBoolean("editProfile", false);
 
-
-
-        if (!isFirstTime) {
-            // go to main activity
+        if (!isFirstTime && !isEditProfile) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
             return;
         }
+
 
         setContentView(R.layout.activity_preclass_question);
 
@@ -64,6 +63,7 @@ public class preclass_question extends AppCompatActivity {
                     .putString("user_age", age)
                     .putString("user_level", level)
                     .putBoolean("isFirstTime", false)
+                    .putBoolean("editProfile", false)
                     .apply();
 
             // Navigate to main screen
