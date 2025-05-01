@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chatBubbleLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <!-- ChatGPT Logo for bot (hidden for user) -->
+    <ImageView
+        android:id="@+id/botIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/chatgpt"
+        android:visibility="gone" />
+
+    <!-- Chat message text -->
+    <TextView
+        android:id="@+id/chatText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bubble"
+        android:text="Sample text"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:maxWidth="300dp" />
+</LinearLayout>

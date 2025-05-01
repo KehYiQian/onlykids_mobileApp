@@ -1,0 +1,8 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_clear"
+        android:title="Clear"
+        android:icon="@drawable/clean_history"
+        app:showAsAction="ifRoom" />
+</menu>
