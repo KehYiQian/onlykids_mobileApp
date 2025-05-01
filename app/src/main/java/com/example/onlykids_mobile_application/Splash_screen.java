@@ -22,7 +22,7 @@ public class Splash_screen extends AppCompatActivity {
         logo.startAnimation(animation);
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(Splash_screen.this, preclass_question.class);
+            Intent intent = new Intent(Splash_screen.this, MainActivity.class);
             startActivity(intent);
             finish();
         }, SPLASH_DURATION);

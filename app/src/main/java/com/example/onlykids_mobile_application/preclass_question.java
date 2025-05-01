@@ -24,9 +24,7 @@ public class preclass_question extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("OnlyKidsPrefs", MODE_PRIVATE);
         boolean isFirstTime = prefs.getBoolean("isFirstTime", true);
 
-        // DEBUG: Force reset first-time flag
-//        prefs.edit().putBoolean("isFirstTime", true).apply();
-//        boolean isFirstTime = true;
+
 
         if (!isFirstTime) {
             // go to main activity
