@@ -1,18 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/classroom_background">
 
+    <!-- Semi-transparent overlay -->
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#80FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- App Title (Auto-scaled for small screens) -->
     <TextView
+        android:id="@+id/tv_app_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="OnlyKids"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#6A1B9A"
+        android:fontFamily="@font/playful_font"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:shadowColor="#333333"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="6"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- ScrollView for buttons -->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/tv_app_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- LinearLayout for single-column button layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal">
+
+            <!-- START Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="200dp"
+                android:layout_height="72dp"
+                android:layout_margin="4dp"
+                android:minWidth="100dp"
+                android:minHeight="48dp"
+                android:text="START"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF5252"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="1dp"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_start"
+                app:iconGravity="start"
+                app:iconPadding="4dp"
+                app:iconSize="20dp"
+                app:iconTint="#FFFFFF"/>
+
+            <!-- NOTES Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_notes"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="200dp"
+                android:layout_height="72dp"
+                android:layout_margin="4dp"
+                android:minWidth="100dp"
+                android:minHeight="48dp"
+                android:text="NOTES"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FFB300"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="1dp"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_notes"
+                app:iconGravity="start"
+                app:iconPadding="4dp"
+                app:iconSize="20dp"
+                app:iconTint="#FFFFFF"/>
+
+            <!-- MISTAKE MEMO Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_mistake_memo"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="200dp"
+                android:layout_height="72dp"
+                android:layout_margin="4dp"
+                android:minWidth="100dp"
+                android:minHeight="48dp"
+                android:text="MISTAKE MEMO"
+                android:textSize="16sp"
+                android:maxLines="2"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#4CAF50"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="1dp"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_mistake_memo"
+                app:iconGravity="start"
+                app:iconPadding="4dp"
+                app:iconSize="20dp"
+                app:iconTint="#FFFFFF"/>
+
+            <!-- REPORT Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_report"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="200dp"
+                android:layout_height="72dp"
+                android:layout_margin="4dp"
+                android:minWidth="100dp"
+                android:minHeight="48dp"
+                android:text="REPORT"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2196F3"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="1dp"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_report"
+                app:iconGravity="start"
+                app:iconPadding="4dp"
+                app:iconSize="20dp"
+                app:iconTint="#FFFFFF"/>
+
+            <!-- VIDEO Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_video"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="200dp"
+                android:layout_height="72dp"
+                android:layout_margin="4dp"
+                android:minWidth="100dp"
+                android:minHeight="48dp"
+                android:text="VIDEO"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#AB47BC"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="1dp"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_video_search"
+                app:iconGravity="start"
+                app:iconPadding="4dp"
+                app:iconSize="20dp"
+                app:iconTint="#FFFFFF"/>
+
+            <!-- EXIT Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_exit"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="200dp"
+                android:layout_height="72dp"
+                android:layout_margin="4dp"
+                android:minWidth="100dp"
+                android:minHeight="48dp"
+                android:text="EXIT"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#F06292"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="1dp"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_exit"
+                app:iconGravity="start"
+                app:iconPadding="4dp"
+                app:iconSize="20dp"
+                app:iconTint="#FFFFFF"/>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
