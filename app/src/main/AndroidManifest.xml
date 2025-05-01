@@ -61,6 +61,11 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+<!--        <activity android:name=".PreClassActivity" />-->
+<!--        <activity android:name=".NotesActivity" />-->
+<!--        <activity android:name=".MistakeMemoActivity" />-->
+<!--        <activity android:name=".PerformanceReportActivity" />-->
+        <activity android:name=".VideoSearchActivity" />
     </application>
 
 </manifest>
