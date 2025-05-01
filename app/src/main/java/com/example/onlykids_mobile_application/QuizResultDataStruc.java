@@ -12,7 +12,7 @@ public class QuizResultDataStruc {
     public QuizResultDataStruc(String subject, int score, String difficulty, int hintsUsed) {
         this.subject = subject;
         this.score = score;
-        this.maxScore = 5;
+        this.maxScore = 3;
         this.difficulty = difficulty;
         this.hintsUsed = hintsUsed;
 
