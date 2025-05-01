@@ -1,10 +1,13 @@
 package com.example.onlykids_mobile_application;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,7 +26,7 @@ import java.util.List;
 
 public class PerformanceReportActivity extends AppCompatActivity {
 
-    private TextView tvQuizDone, tvAveScore, tvHintUsed, tvGroupInfo, labelXAxis, labelYAxis, tvFeedbackDetail;
+    private TextView tvQuizDone, tvAveScore, tvHintUsed, tvGroupInfo, labelXAxis, labelYAxis, tvFeedbackDetail, tvUserInfo ;
     private Spinner subjectSpinner, timeSpinner;
     private LineChart lineChart;
     private List<QuizResultDataStruc> allQuizResults;
@@ -34,6 +37,20 @@ public class PerformanceReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_performance_report);
 
         setupViews();
+        SharedPreferences prefs = getSharedPreferences("OnlyKidsPrefs", MODE_PRIVATE);
+        String name = prefs.getString("user_name", "Unknown");
+        String age = prefs.getString("user_age", "-");
+        String level = prefs.getString("user_level", "-");
+
+        String userInfo = "Name: " + name + "   Age: " + age + "   Level: " + level;
+        tvUserInfo.setText(userInfo);
+
+        ImageButton btnEditProfile = findViewById(R.id.btnEditProfile);
+        btnEditProfile.setOnClickListener(v -> {
+            prefs.edit().putBoolean("editProfile", true).apply();
+            startActivity(new Intent(this, preclass_question.class));
+        });
+
         setupSpinners();
         //testing dummy
         //allQuizResults = getDummyQuizData();
@@ -62,6 +79,7 @@ public class PerformanceReportActivity extends AppCompatActivity {
         tvFeedbackDetail = findViewById(R.id.tvFeedbackDetail);
         lineChart = findViewById(R.id.lineChart);
 
+        tvUserInfo = findViewById(R.id.tvUserInfo);
         subjectSpinner = findViewById(R.id.spinnerReportSubject);
         timeSpinner = findViewById(R.id.spinnerReportTime);
     }
