@@ -24,6 +24,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class chatRoom extends AppCompatActivity {
 
@@ -45,10 +46,12 @@ public class chatRoom extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.chatToolbar);
         setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Chat Room");
 
         chatRecyclerView = findViewById(R.id.chatRecyclerView);
         messageInput = findViewById(R.id.messageInput);
         Button sendBtn = findViewById(R.id.sendBtn);
+        Button quizBtn = findViewById(R.id.quizBtn);
 
         loadChatMessages(); // load before adapter setup
 
@@ -68,6 +71,12 @@ public class chatRoom extends AppCompatActivity {
                 messageInput.setText("");
             }
         });
+
+        quizBtn.setOnClickListener(v -> {
+            // Trigger quiz generation manually
+            sendMessage("quiz");
+        });
+
     }
 
     @Override

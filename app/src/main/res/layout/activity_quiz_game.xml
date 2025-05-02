@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Question Text (20% height) -->
     <TextView
         android:id="@+id/quizText"
         android:layout_width="0dp"
@@ -29,9 +28,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.2" />
+        app:layout_constraintHeight_percent="0.3" />
 
-    <!-- Option A -->
     <Button
         android:id="@+id/optionA"
         android:layout_width="0dp"
@@ -61,7 +59,6 @@
         android:contentDescription="@string/image_describe_correct_or_wrong" />
 
 
-    <!-- Option B -->
     <Button
         android:id="@+id/optionB"
         android:layout_width="0dp"
@@ -90,7 +87,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="@string/image_describe_correct_or_wrong" />
 
-    <!-- Option C -->
     <Button
         android:id="@+id/optionC"
         android:layout_width="0dp"
@@ -120,7 +116,6 @@
         android:contentDescription="@string/image_describe_correct_or_wrong" />
 
 
-    <!-- Option D -->
     <Button
         android:id="@+id/optionD"
         android:layout_width="0dp"

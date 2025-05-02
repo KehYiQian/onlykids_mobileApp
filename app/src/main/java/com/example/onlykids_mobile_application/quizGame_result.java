@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.text.MessageFormat;
 
 public class quizGame_result extends AppCompatActivity {
@@ -45,13 +47,17 @@ public class quizGame_result extends AppCompatActivity {
         currentLevel = getIntent().getIntExtra("currentLevel", 1);
 
         scoreText.setText(MessageFormat.format("You got {0} out of {1} correct!", score, total));
+        LottieAnimationView resultAnimationView = findViewById(R.id.resultAnimationView);
 
         if (score == total) {
             feedbackText.setText(getString(R.string.perfect_score_ready_for_harder_questions));
+            resultAnimationView.setAnimation("firework.json");
         } else if (score >= total / 2) {
             feedbackText.setText(getString(R.string.good_effort_let_s_improve_next));
+            resultAnimationView.setAnimation("thumb_up.json");
         } else {
             feedbackText.setText(getString(R.string.keep_practicing));
+            resultAnimationView.setAnimation("clamp.json");
         }
 
         if (currentLevel > MAX_LEVEL) {

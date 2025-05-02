@@ -31,26 +31,43 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="8dp">
 
-            <EditText
-                android:id="@+id/messageInput"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/bg_bubble"
-                android:hint="@string/type_a_message"
-                android:padding="12dp"
-                android:textColor="#000000"
-                android:inputType="textCapSentences|textMultiLine"
-                android:importantForAutofill="no" />
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/messageInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_bubble"
+                    android:hint="@string/type_a_message"
+                    android:padding="12dp"
+                    android:textColor="#000000"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:importantForAutofill="no" />
+
+                <Button
+                    android:id="@+id/sendBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#673AB7"
+                    android:text="@string/send" />
+            </LinearLayout>
 
             <Button
-                android:id="@+id/sendBtn"
-                android:layout_width="wrap_content"
+                android:id="@+id/quizBtn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/send" />
+                android:text="@string/generate_quiz"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#673AB7"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>
