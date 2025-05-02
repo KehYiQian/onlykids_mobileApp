@@ -15,7 +15,7 @@ public class SavedNotesAdapter extends RecyclerView.Adapter<SavedNotesAdapter.Sa
     private OnDeleteClickListener deleteClickListener;
     private OnEditClickListener editClickListener;
     private final android.content.Context context;
-
+//asdasd
     // Interfaces for callback
     public interface OnDeleteClickListener {
         void onDeleteClick(int position);
