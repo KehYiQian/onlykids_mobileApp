@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" android:minSdkVersion="33" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
 
+        android:maxSdkVersion="32" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -70,6 +74,9 @@
         <!-- <activity android:name=".MistakeMemoActivity" /> -->
         <!-- <activity android:name=".PerformanceReportActivity" /> -->
         <activity android:name=".VideoSearchActivity" />
+        <activity android:name=".NotesActivity" />
+        <activity android:name=".ViewNotesActivity" />
+        <activity android:name=".NoteChatBoxActivity" />
     </application>
 
 </manifest>
