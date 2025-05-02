@@ -22,16 +22,22 @@
             android:textStyle="bold"
             android:fontFamily="sans-serif" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/editButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_edit"
+            android:contentDescription="Edit Note"
+            android:layout_marginEnd="8dp" />
+
+        <ImageButton
             android:id="@+id/deleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="#FF0000"
-            android:textColor="@android:color/white"
-            android:text="Delete"
-            android:textSize="12sp"
-            android:padding="8dp" />
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="Delete Note" />
     </LinearLayout>
 
     <TextView

@@ -161,6 +161,10 @@ class SavedNote {
         return note;
     }
 
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     public String getTimestamp() {
         return timestamp;
     }

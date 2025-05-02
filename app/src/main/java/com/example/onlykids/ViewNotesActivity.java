@@ -3,7 +3,9 @@ package com.example.onlykids;
 import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,13 +22,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-public class ViewNotesActivity extends AppCompatActivity implements SavedNotesAdapter.OnDeleteClickListener {
+public class ViewNotesActivity extends AppCompatActivity implements SavedNotesAdapter.OnDeleteClickListener, SavedNotesAdapter.OnEditClickListener {
     private RecyclerView savedNotesRecyclerView;
     private SavedNotesAdapter savedNotesAdapter;
     private SharedPreferences sharedPreferences;
     private List<SavedNote> allSavedNotes; // Store all notes for filtering
     private TextView selectedDateTextView;
     private Button selectDateButton;
+    private Button clearFilterButton;
     private SimpleDateFormat dateFormat;
     private String currentFilterDate; // Store the currently applied date filter
 
@@ -35,9 +38,11 @@ public class ViewNotesActivity extends AppCompatActivity implements SavedNotesAd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notes);
 
+        // Initialize UI components
         savedNotesRecyclerView = findViewById(R.id.savedNotesRecyclerView);
         selectedDateTextView = findViewById(R.id.selectedDateTextView);
         selectDateButton = findViewById(R.id.selectDateButton);
+        clearFilterButton = findViewById(R.id.clearFilterButton);
         sharedPreferences = getSharedPreferences("OnlyKidsNotes", MODE_PRIVATE);
 
         // Date format for filtering (only the date part, excluding time)
@@ -57,12 +62,15 @@ public class ViewNotesActivity extends AppCompatActivity implements SavedNotesAd
         sortNotesByTimestamp(allSavedNotes);
 
         // Set up the RecyclerView with all notes initially
-        savedNotesAdapter = new SavedNotesAdapter(allSavedNotes, this);
+        savedNotesAdapter = new SavedNotesAdapter(allSavedNotes, this, this, this);
         savedNotesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         savedNotesRecyclerView.setAdapter(savedNotesAdapter);
 
         // Set up the date picker button
         selectDateButton.setOnClickListener(v -> showDatePickerDialog());
+
+        // Set up the clear filter button
+        clearFilterButton.setOnClickListener(v -> clearFilter());
     }
 
     private void showDatePickerDialog() {
@@ -100,6 +108,13 @@ public class ViewNotesActivity extends AppCompatActivity implements SavedNotesAd
         savedNotesAdapter.updateNotes(filteredNotes);
     }
 
+    private void clearFilter() {
+        currentFilterDate = null;
+        selectedDateTextView.setText("Select a date to filter notes");
+        sortNotesByTimestamp(allSavedNotes);
+        savedNotesAdapter.updateNotes(allSavedNotes);
+    }
+
     private void sortNotesByTimestamp(List<SavedNote> notes) {
         Collections.sort(notes, new Comparator<SavedNote>() {
             @Override
@@ -127,6 +142,51 @@ public class ViewNotesActivity extends AppCompatActivity implements SavedNotesAd
                     } else {
                         sortNotesByTimestamp(allSavedNotes);
                         savedNotesAdapter.updateNotes(allSavedNotes);
+                    }
+                    dialog.dismiss();
+                })
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+                .setCancelable(true)
+                .show();
+    }
+
+    @Override
+    public void onEditClick(int position) {
+        SavedNote noteToEdit = savedNotesAdapter.getNote(position);
+
+        // Create an EditText for the user to modify the note
+        EditText editText = new EditText(this);
+        editText.setText(noteToEdit.getNote());
+        editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        editText.setLines(3);
+        editText.setMaxLines(5);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Edit Note")
+                .setView(editText)
+                .setPositiveButton("Save", (dialog, which) -> {
+                    String updatedNote = editText.getText().toString().trim();
+                    if (!updatedNote.isEmpty()) {
+                        // Update the note in allSavedNotes
+                        for (SavedNote note : allSavedNotes) {
+                            if (note.getNote().equals(noteToEdit.getNote()) && note.getTimestamp().equals(noteToEdit.getTimestamp())) {
+                                note.setNote(updatedNote); // Assuming SavedNote has a setNote method
+                                break;
+                            }
+                        }
+
+                        // Update SharedPreferences
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("saved_notes", new Gson().toJson(allSavedNotes));
+                        editor.apply();
+
+                        // Refresh the RecyclerView
+                        if (currentFilterDate != null) {
+                            filterNotesByDate(currentFilterDate);
+                        } else {
+                            sortNotesByTimestamp(allSavedNotes);
+                            savedNotesAdapter.updateNotes(allSavedNotes);
+                        }
                     }
                     dialog.dismiss();
                 })

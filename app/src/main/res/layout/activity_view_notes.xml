@@ -48,6 +48,19 @@
             android:textColor="#212121"
             android:fontFamily="sans-serif" />
 
+
+        <Button
+            android:id="@+id/clearFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#FF6F61"
+            android:textColor="@android:color/white"
+            android:text="Clear Filter"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:layout_marginEnd="8dp" />
+
         <Button
             android:id="@+id/selectDateButton"
             android:layout_width="wrap_content"
@@ -58,6 +71,8 @@
             android:text="Select Date"
             android:textSize="14sp"
             android:padding="8dp" />
+
+
     </LinearLayout>
 
     <!-- Saved Notes RecyclerView -->

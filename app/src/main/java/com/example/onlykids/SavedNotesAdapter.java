@@ -3,7 +3,7 @@ package com.example.onlykids;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,22 +13,30 @@ import java.util.List;
 public class SavedNotesAdapter extends RecyclerView.Adapter<SavedNotesAdapter.SavedNoteViewHolder> {
     private List<SavedNote> savedNotes;
     private OnDeleteClickListener deleteClickListener;
+    private OnEditClickListener editClickListener;
+    private final android.content.Context context;
 
-    // Interface for delete button click callback
+    // Interfaces for callback
     public interface OnDeleteClickListener {
         void onDeleteClick(int position);
     }
 
-    public SavedNotesAdapter(List<SavedNote> savedNotes, OnDeleteClickListener listener) {
+    public interface OnEditClickListener {
+        void onEditClick(int position);
+    }
+
+    public SavedNotesAdapter(List<SavedNote> savedNotes, OnDeleteClickListener deleteListener, OnEditClickListener editListener, android.content.Context context) {
         this.savedNotes = new ArrayList<>(savedNotes);
-        this.deleteClickListener = listener;
+        this.deleteClickListener = deleteListener;
+        this.editClickListener = editListener;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public SavedNoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_saved_note, parent, false);
+                .inflate(R.layout.item_saved_notes, parent, false);
         return new SavedNoteViewHolder(view);
     }
 
@@ -40,6 +48,11 @@ public class SavedNotesAdapter extends RecyclerView.Adapter<SavedNotesAdapter.Sa
         holder.deleteButton.setOnClickListener(v -> {
             if (deleteClickListener != null) {
                 deleteClickListener.onDeleteClick(position);
+            }
+        });
+        holder.editButton.setOnClickListener(v -> {
+            if (editClickListener != null) {
+                editClickListener.onEditClick(position);
             }
         });
     }
@@ -70,13 +83,15 @@ public class SavedNotesAdapter extends RecyclerView.Adapter<SavedNotesAdapter.Sa
     static class SavedNoteViewHolder extends RecyclerView.ViewHolder {
         TextView timestampTextView;
         TextView noteTextView;
-        Button deleteButton;
+        ImageButton deleteButton;
+        ImageButton editButton;
 
         public SavedNoteViewHolder(@NonNull View itemView) {
             super(itemView);
             timestampTextView = itemView.findViewById(R.id.timestampTextView);
             noteTextView = itemView.findViewById(R.id.noteTextView);
             deleteButton = itemView.findViewById(R.id.deleteButton);
+            editButton = itemView.findViewById(R.id.editButton);
         }
     }
 }

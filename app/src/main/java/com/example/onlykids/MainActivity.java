@@ -10,8 +10,10 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Button;
@@ -139,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         sendButton.setOnClickListener(v -> {
+            Log.d(TAG, "Send button clicked");
             String messageText = messageEditText.getText().toString().trim();
             if (!messageText.isEmpty()) {
                 sendMessage(messageText);
@@ -162,6 +165,23 @@ public class MainActivity extends AppCompatActivity {
         chatMessages.add(new ChatMessage("Hi there! How can I help you today?", false));
         chatAdapter.notifyItemInserted(chatMessages.size() - 1);
         chatRecyclerView.scrollToPosition(chatMessages.size() - 1);
+
+        // Request focus and show keyboard with delay
+        new Handler().postDelayed(() -> {
+            Log.d(TAG, "Requesting focus on messageEditText");
+            messageEditText.requestFocus();
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                Log.d(TAG, "Showing soft keyboard");
+                imm.showSoftInput(messageEditText, InputMethodManager.SHOW_IMPLICIT);
+                if (!imm.isActive()) {
+                    Log.w(TAG, "Soft keyboard not active, attempting to force show");
+                    messageEditText.post(() -> imm.showSoftInput(messageEditText, InputMethodManager.SHOW_FORCED));
+                }
+            } else {
+                Log.e(TAG, "InputMethodManager is null");
+            }
+        }, 200); // Delay to allow UI to settle
     }
 
     private void checkStoragePermission() {
@@ -307,10 +327,10 @@ public class MainActivity extends AppCompatActivity {
                 });
             } catch (Exception e) {
                 runOnUiThread(() -> {
-                    chatMessages.add(new ChatMessage("Error: API call failed: " + e.getMessage(), false));
+                    chatMessages.add(new ChatMessage("Error: API call failed after all retries: " + e.getMessage() + ". Please try again later.", false));
                     chatAdapter.notifyItemInserted(chatMessages.size() - 1);
                     chatRecyclerView.scrollToPosition(chatMessages.size() - 1);
-                    Log.e(TAG, "API call failed: " + e.getMessage(), e);
+                    Log.e(TAG, "API call failed after all retries: " + e.getMessage(), e);
                 });
             }
         }).start();
@@ -319,9 +339,9 @@ public class MainActivity extends AppCompatActivity {
     private String getChatGPTResponseWithRetry(String userMessage) throws Exception {
         OkHttpClient client = new OkHttpClient.Builder()
                 .dns(CUSTOM_DNS)
-                .connectTimeout(15, TimeUnit.SECONDS)
-                .readTimeout(15, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS) // Increased timeout
+                .readTimeout(30, TimeUnit.SECONDS)   // Increased timeout
+                .writeTimeout(30, TimeUnit.SECONDS)  // Increased timeout
                 .build();
 
         MediaType JSON = MediaType.get("application/json; charset=utf-8");
@@ -375,6 +395,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Log.d(TAG, "Attempt " + attempt + " of " + MAX_RETRIES + " to send request to: " + API_URL);
                 try (Response response = client.newCall(request).execute()) {
+                    Log.d(TAG, "Received response for attempt " + attempt);
                     String responseBody = response.body() != null ? response.body().string() : "No response body";
                     Log.d(TAG, "Response code: " + response.code());
                     Log.d(TAG, "Response body: " + responseBody);
@@ -408,9 +429,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "Attempt " + attempt + " failed: " + e.getMessage(), e);
                 if (attempt < MAX_RETRIES && !e.getMessage().contains("rate_limit_exceeded")) {
                     try {
+                        Log.d(TAG, "Retrying after delay of " + RETRY_DELAY_MS + "ms");
                         Thread.sleep(RETRY_DELAY_MS);
                     } catch (InterruptedException ie) {
                         Thread.currentThread().interrupt();
+                        Log.e(TAG, "Retry interrupted: " + ie.getMessage(), ie);
                     }
                 }
             }
@@ -460,9 +483,9 @@ public class MainActivity extends AppCompatActivity {
 
                 OkHttpClient client = new OkHttpClient.Builder()
                         .dns(CUSTOM_DNS)
-                        .connectTimeout(15, TimeUnit.SECONDS)
-                        .readTimeout(15, TimeUnit.SECONDS)
-                        .writeTimeout(15, TimeUnit.SECONDS)
+                        .connectTimeout(30, TimeUnit.SECONDS)
+                        .readTimeout(30, TimeUnit.SECONDS)
+                        .writeTimeout(30, TimeUnit.SECONDS)
                         .build();
 
                 MediaType JSON = MediaType.get("application/json; charset=utf-8");
