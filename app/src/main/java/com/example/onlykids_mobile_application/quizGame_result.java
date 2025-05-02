@@ -59,7 +59,7 @@ public class quizGame_result extends AppCompatActivity {
             resultAnimationView.setAnimation("thumb_up.json");
         } else {
             feedbackText.setText(getString(R.string.keep_practicing));
-            resultAnimationView.setAnimation("clamp.json");
+            resultAnimationView.setAnimation("clap.json");
         }
         resultAnimationView.playAnimation();
 
