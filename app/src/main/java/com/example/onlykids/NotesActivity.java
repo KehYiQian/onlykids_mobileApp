@@ -43,7 +43,7 @@ public class NotesActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("OnlyKidsNotes", MODE_PRIVATE);
 
-        // Get the assistant responses passed from MainActivity
+        // Get the assistant responses passed from ChatboxActivity
         assistantResponses = getIntent().getStringArrayListExtra("assistant_responses");
         if (assistantResponses == null) {
             assistantResponses = new ArrayList<>();
@@ -76,7 +76,7 @@ public class NotesActivity extends AppCompatActivity {
 
         // Handle the "BACK TO CHATBOX" button click
         backToChatButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, NoteChatBoxActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
             finish();
