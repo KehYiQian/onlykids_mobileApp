@@ -28,7 +28,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import com.example.onlykids.R;
 public class VideoSearchActivity extends AppCompatActivity {
 
     private EditText etSearchQuery;

@@ -52,13 +52,13 @@
             android:exported="false" />
         <activity
             android:name="com.example.onlykids_mobile_application.start_quiz"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name="com.example.onlykids_mobile_application.quizGame"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name="com.example.onlykids_mobile_application.chatRoom"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name="com.example.onlykids_mobile_application.MainActivity"
             android:exported="false">
@@ -69,10 +69,7 @@
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
-        </activity> <!-- <activity android:name=".PreClassActivity" /> -->
-        <!-- <activity android:name=".NotesActivity" /> -->
-        <!-- <activity android:name=".MistakeMemoActivity" /> -->
-        <!-- <activity android:name=".PerformanceReportActivity" /> -->
+        </activity>
         <activity android:name="com.example.onlykids_mobile_application.VideoSearchActivity" />
         <activity android:name="com.example.onlykids_mobile_application.NotesActivity" />
         <activity android:name="com.example.onlykids_mobile_application.ViewNotesActivity" />

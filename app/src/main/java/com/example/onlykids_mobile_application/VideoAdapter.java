@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
-import com.example.onlykids.R;
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 
     private Context context;
