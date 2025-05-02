@@ -26,7 +26,7 @@ import java.util.List;
 
 public class PerformanceReportActivity extends AppCompatActivity {
 
-    private TextView tvQuizDone, tvAveScore, tvHintUsed, tvGroupInfo, labelXAxis, labelYAxis, tvFeedbackDetail, tvUserInfo ;
+    private TextView tvQuizDone, tvAveScore, /*tvHintUsed,*/ tvGroupInfo, labelXAxis, labelYAxis, tvFeedbackDetail, tvUserInfo ;
     private Spinner subjectSpinner, timeSpinner;
     private LineChart lineChart;
     private List<QuizResultDataStruc> allQuizResults;
@@ -52,8 +52,6 @@ public class PerformanceReportActivity extends AppCompatActivity {
         });
 
         setupSpinners();
-        //testing dummy
-        //allQuizResults = getDummyQuizData();
         QuizResultDatabase db = QuizResultDatabase.getInstance(this);
         QuizResultDao dao = db.quizResultDao();
         List<QuizResultEntity> raw = dao.getAll();
@@ -65,13 +63,14 @@ public class PerformanceReportActivity extends AppCompatActivity {
         List<QuizResultDataStruc> list = new ArrayList<>();
         for (QuizResultEntity e : raw) {
             list.add(new QuizResultDataStruc(e.subject, e.score, e.difficulty, e.hintsUsed));
+            //sample("Math", 3, "EASY", 0)) hintUsed for future implementation
         }
         return list;
     }
 
     private void setupViews() {
         tvAveScore = findViewById(R.id.tvAveScore);
-        tvHintUsed = findViewById(R.id.tvHintUsed);
+        //tvHintUsed = findViewById(R.id.tvHintUsed);
         tvQuizDone = findViewById(R.id.tvQuizDone);
         tvGroupInfo = findViewById(R.id.tvGroupInfo);
         labelXAxis = findViewById(R.id.labelXAxis);
@@ -218,29 +217,29 @@ public class PerformanceReportActivity extends AppCompatActivity {
 
     private void updateInsights(List<QuizResultDataStruc> data) {
         float total = 0;
-        int hints = 0;
+        //int hints = 0;
         for (QuizResultDataStruc q : data) {
             total += getNormalizedScore(q);
-            hints += q.getHintsUsed();
+            //hints += q.getHintsUsed();
         }
 
         float avg = data.isEmpty() ? 0 : total / data.size();
         tvQuizDone.setText("Quiz Done: " + data.size());
-        tvHintUsed.setText("Total Hints: " + hints);
+        //tvHintUsed.setText("Total Hints: " + hints);
         tvAveScore.setText("Average Score: " + String.format("%.2f", avg));
 
-        // --- Hint Feedback ---
-        String hintFeedback;
-        float avgHint = data.isEmpty() ? 0 : (float) hints / data.size();
-        if (hints == 0) {
-            hintFeedback = "💡 Awesome! You didn’t use any hints.";
-        } else if (avgHint <= 0.5f) {
-            hintFeedback = "💡 Great job! You’re barely using hints.";
-        } else if (avgHint <= 1.5f) {
-            hintFeedback = "💡 Try to rely a little less on hints.";
-        } else {
-            hintFeedback = "💡 Let’s use fewer hints next time!";
-        }
+//        //--- Hint Feedback ---
+//        String hintFeedback;
+//        float avgHint = data.isEmpty() ? 0 : (float) hints / data.size();
+//        if (hints == 0) {
+//            hintFeedback = "💡 Awesome! You didn’t use any hints.";
+//        } else if (avgHint <= 0.5f) {
+//            hintFeedback = "💡 Great job! You’re barely using hints.";
+//        } else if (avgHint <= 1.5f) {
+//            hintFeedback = "💡 Try to rely a little less on hints.";
+//        } else {
+//            hintFeedback = "💡 Let’s use fewer hints next time!";
+//        }
 
         // --- Score Trend Feedback using linear regression ---
         String trendFeedback;
@@ -261,12 +260,15 @@ public class PerformanceReportActivity extends AppCompatActivity {
                 trendFeedback = "🎯 You're staying consistent. Great effort!";
             }
         }
-        if (data.size()==0){
-            tvFeedbackDetail.setText(trendFeedback);
-        }
-        else{
-            tvFeedbackDetail.setText(trendFeedback + "\n" + hintFeedback);
-        }
+
+        tvFeedbackDetail.setText(trendFeedback);
+//        //hintUsed for future use
+//        if (data.size()==0){
+//            tvFeedbackDetail.setText(trendFeedback);
+//        }
+//        else{
+//            tvFeedbackDetail.setText(trendFeedback + "\n" + hintFeedback);
+//        }
 
     }
 
@@ -284,12 +286,13 @@ public class PerformanceReportActivity extends AppCompatActivity {
     }
 
     private float getNormalizedScore(QuizResultDataStruc quiz) {
+        String diff = quiz.getDifficulty().toLowerCase();
         float multiplier;
-        switch (quiz.getDifficulty()) {
-            case "Medium":
+        switch (diff) {
+            case "medium":
                 multiplier = 1.25f;
                 break;
-            case "Hard":
+            case "hard":
                 multiplier = 1.5f;
                 break;
             default:
@@ -297,33 +300,6 @@ public class PerformanceReportActivity extends AppCompatActivity {
                 break;
         }
         return quiz.getScore() * multiplier;
-    }
-
-    // testing purpsoe code
-    private List<QuizResultDataStruc> getDummyQuizData() {
-        List<QuizResultDataStruc> list = new ArrayList<>();
-
-        list.add(new QuizResultDataStruc("Math", 5, "Easy", 1));
-        list.add(new QuizResultDataStruc("Math", 4, "Medium", 0));
-        list.add(new QuizResultDataStruc("Math", 3, "Hard", 2));
-        list.add(new QuizResultDataStruc("Math", 2, "Medium", 1));
-        list.add(new QuizResultDataStruc("Math", 5, "Hard", 0));
-        list.add(new QuizResultDataStruc("Math", 5, "Easy", 1));
-        list.add(new QuizResultDataStruc("Math", 4, "Medium", 0));
-        list.add(new QuizResultDataStruc("Math", 3, "Hard", 2));
-        list.add(new QuizResultDataStruc("Math", 2, "Medium", 1));
-        list.add(new QuizResultDataStruc("Math", 5, "Hard", 0));
-        list.add(new QuizResultDataStruc("Math", 5, "Easy", 1));
-        list.add(new QuizResultDataStruc("Math", 5, "Medium", 0));
-        list.add(new QuizResultDataStruc("Math", 5, "Hard", 2));
-        list.add(new QuizResultDataStruc("Math", 5, "Medium", 1));
-        list.add(new QuizResultDataStruc("Math", 5, "Hard", 0));
-
-        list.add(new QuizResultDataStruc("Science", 4, "Easy", 0));
-        list.add(new QuizResultDataStruc("Science", 3, "Medium", 1));
-        list.add(new QuizResultDataStruc("Science", 2, "Hard", 2));
-
-        return list;
     }
 
     public class SimpleSpinnerListener implements AdapterView.OnItemSelectedListener {
