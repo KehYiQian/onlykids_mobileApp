@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">onlykids_mobile_application</string>
     <string name="chat_tool_bar">Chat Tool Bar</string>
@@ -37,15 +37,14 @@
     <string name="enter_your_age">Enter your age</string>
     <string name="enter_your_school_level">Enter your school level</string>
     <string name="onlykids_logo">OnlyKids Logo</string>
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">OnlyKids</string>
     <string name="message_hint">Message...</string>
-    <string name="send">Send</string>
     <string name="notes">Notes</string>
     <string name="quiz">Quiz</string>
     <string name="generated_notes_placeholder">Generated Notes:\n• (Auto-generated content appears here)</string>
     <string name="save_to_app">Save to App</string>
->>>>>>> abcd
 </resources>
+
+
+
+
+

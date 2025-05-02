@@ -1,4 +1,4 @@
-package com.example.onlykids_mobile_application;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,7 +52,6 @@ public class chatRoom extends AppCompatActivity {
         chatRecyclerView = findViewById(R.id.chatRecyclerView);
         messageInput = findViewById(R.id.messageInput);
         Button sendBtn = findViewById(R.id.sendBtn);
-        Button quizBtn = findViewById(R.id.quizBtn);
 
         loadChatMessages(); // load before adapter setup
 
@@ -73,10 +72,6 @@ public class chatRoom extends AppCompatActivity {
             }
         });
 
-        quizBtn.setOnClickListener(v -> {
-            // Trigger quiz generation manually
-            sendMessage("quiz");
-        });
 
     }
 

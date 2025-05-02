@@ -1,12 +1,10 @@
-package com.example.onlykids_mobile_application;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-
 import com.example.onlykids.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class start_quiz extends AppCompatActivity {
     @Override

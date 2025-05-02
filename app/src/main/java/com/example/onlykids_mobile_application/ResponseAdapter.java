@@ -1,12 +1,16 @@
-package com.example.onlykids;
+package com.example.onlykids_mobile_application;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.onlykids.R;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.onlykids_mobile_application;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import com.example.onlykids.R;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.onlykids.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;

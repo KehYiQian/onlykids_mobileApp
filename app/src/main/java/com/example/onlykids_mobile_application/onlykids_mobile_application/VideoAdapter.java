@@ -1,4 +1,4 @@
-package com.example.onlykids_mobile_application;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,13 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.example.onlykids.R;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
-import com.example.onlykids.R;
+
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 
     private Context context;

@@ -1,4 +1,4 @@
-package com.example.onlykids_mobile_application;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
