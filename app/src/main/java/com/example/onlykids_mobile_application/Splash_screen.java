@@ -3,11 +3,11 @@ package com.example.onlykids_mobile_application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
-
 
 public class Splash_screen extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class Splash_screen extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.splash_screen_anim);
         logo.startAnimation(animation);
 
-        new Handler().postDelayed(() -> {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Intent intent = new Intent(Splash_screen.this, MainActivity.class);
             startActivity(intent);
             finish();
