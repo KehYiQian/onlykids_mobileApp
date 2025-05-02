@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.onlykids.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
@@ -179,11 +178,11 @@ public class chatRoom extends AppCompatActivity {
         loadingDialog.show();
 
         String prompt = "You are a quiz generator for primary school students. Focused on the " +  userQuestion + " with topic \"" + topic + "\", create an EASY level JSON array with exactly 3 multiple-choice questions. " +
-                "Each question should be an object containing 'question', 'options' (an array of 4 choices), and 'answer'. " +
+                "Each question should be an object containing 'question', 'options' (an array of 4 choices that one of them contains answer), and 'answer'. " +
                 "Ensure the complexity reflects the following guidelines:\n" +
                 "- EASY: use simple, direct questions with basic facts or one-digit numbers.\n" +
                 "Ensure all questions are strictly related to \"" + userQuestion + "\". " +
-                "Return ONLY a valid JSON array. Do NOT include explanations or text outside the array.";
+                "Return only a valid JSON array. Do not include explanations or text outside the array.";
 
         chatGPT_services.callChatGPT(chatRoom.this, prompt, new chatGPT_services.ChatGPTCallback() {
             @Override

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.example.onlykids.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

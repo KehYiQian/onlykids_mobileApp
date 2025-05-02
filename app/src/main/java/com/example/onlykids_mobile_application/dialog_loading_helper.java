@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.onlykids.R;
-
 public class dialog_loading_helper {
 
     public static AlertDialog showLoadingDialog(Context context, String message) {

@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import com.example.onlykids.R;
 import com.google.gson.Gson;
 
 public class quizGame extends AppCompatActivity {

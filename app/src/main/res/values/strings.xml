@@ -42,6 +42,14 @@
     <string name="quiz">Quiz</string>
     <string name="generated_notes_placeholder">Generated Notes:\n• (Auto-generated content appears here)</string>
     <string name="save_to_app">Save to App</string>
+    <string name="generate_quiz">Generate Quiz</string>
+    <string name="quiz_level_completed">Quiz Level Completed</string>
+    <string name="you_got_2_out_of_3_correct">You got 3 out of 3 correct</string>
+    <string name="total_time_0_seconds">Total time: 0 seconds</string>
+    <string name="awesome_job">Awesome job!</string>
+    <string name="continue_to_next_level">Continue to Next Level</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="result_animation">result of animation</string>
 </resources>
 
 

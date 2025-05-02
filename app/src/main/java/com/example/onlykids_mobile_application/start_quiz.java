@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.onlykids.R;
-
 public class start_quiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

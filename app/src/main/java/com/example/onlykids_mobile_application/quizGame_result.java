@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.onlykids.R;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 import java.text.MessageFormat;
 
@@ -48,13 +49,20 @@ public class quizGame_result extends AppCompatActivity {
 
         scoreText.setText(MessageFormat.format("You got {0} out of {1} correct!", score, total));
 
+        LottieAnimationView resultAnimationView = findViewById(R.id.resultAnimationView);
+
         if (score == total) {
             feedbackText.setText(getString(R.string.perfect_score_ready_for_harder_questions));
+            resultAnimationView.setAnimation("firework.json");
         } else if (score >= total / 2) {
             feedbackText.setText(getString(R.string.good_effort_let_s_improve_next));
+            resultAnimationView.setAnimation("thumb_up.json");
         } else {
             feedbackText.setText(getString(R.string.keep_practicing));
+            resultAnimationView.setAnimation("clamp.json");
         }
+        resultAnimationView.playAnimation();
+
 
         if (currentLevel > MAX_LEVEL) {
             continueButton.setVisibility(View.GONE); // No more levels will be performed because of achieving the maximum level
@@ -77,13 +85,13 @@ public class quizGame_result extends AppCompatActivity {
 
             String prompt = "You are a quiz generator for primary school students. Focused on the" + userQuestion + " in topic \"" + topic + "\", create a "
                     + difficulty + " level JSON array with exactly 3 multiple-choice questions. " +
-                    "Each question should be an object containing 'question', 'options' (an array of 4 choices), and 'answer'. " +
+                    "Each question should be an object containing 'question', 'options' (an array of 4 choices that one of them contains answer), and 'answer'. " +
                     "Ensure the complexity reflects the following guidelines:\n\n" +
                     "- EASY: use simple, direct questions with one digit small numbers or basic facts.\n" +
                     "- MEDIUM: use slightly longer questions with more options, real-world context, or moderate two digit numbers.\n" +
                     "- HARD: use multi-step reasoning, tricky wording, smaller three digit numbers, or unfamiliar formats that require higher-order thinking.\n\n" +
                     "Ensure all questions are strictly related to \"" + userQuestion + "\". " +
-                    "Return ONLY a valid JSON array. Do NOT include explanations or text outside the array.";
+                    "Return only a valid JSON array. Do not include explanations or text outside the array.";
 
 
             chatGPT_services.callChatGPT(quizGame_result.this, prompt, new chatGPT_services.ChatGPTCallback() {

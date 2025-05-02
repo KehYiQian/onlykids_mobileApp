@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.example.onlykids.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

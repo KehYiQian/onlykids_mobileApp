@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/reportTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
@@ -42,7 +42,8 @@
                     android:text="Name: , Age: , Level: "
                     android:textStyle="italic"
                     android:textColor="#555555"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:layout_marginStart="18dp"/>
 
                 <ImageButton
                     android:id="@+id/btnEditProfile"

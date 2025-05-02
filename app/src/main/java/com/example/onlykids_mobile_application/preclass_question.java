@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.onlykids.R;
-
 public class preclass_question extends AppCompatActivity {
 
     private EditText nameInput, ageInput;
