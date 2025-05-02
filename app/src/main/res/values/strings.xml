@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OnlyKids</string>
+    <string name="message_hint">Message...</string>
+    <string name="send">Send</string>
+    <string name="notes">Notes</string>
+    <string name="quiz">Quiz</string>
+    <string name="generated_notes_placeholder">Generated Notes:\n• (Auto-generated content appears here)</string>
+    <string name="save_to_app">Save to App</string>
+</resources>
