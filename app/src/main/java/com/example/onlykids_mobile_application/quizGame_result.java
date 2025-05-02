@@ -64,7 +64,7 @@ public class quizGame_result extends AppCompatActivity {
         resultAnimationView.playAnimation();
 
 
-        if (currentLevel > MAX_LEVEL) {
+        if (currentLevel > MAX_LEVEL || score <= 1) {
             continueButton.setVisibility(View.GONE); // No more levels will be performed because of achieving the maximum level
         }
 
