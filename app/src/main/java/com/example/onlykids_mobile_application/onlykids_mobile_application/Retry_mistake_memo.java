@@ -1,4 +1,4 @@
-package com.example.onlykids_mobile_application;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,11 +9,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.onlykids.R;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.example.onlykids.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

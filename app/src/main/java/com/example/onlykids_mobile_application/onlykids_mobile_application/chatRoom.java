@@ -1,4 +1,4 @@
-package com.example.onlykids_mobile_application;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +25,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class chatRoom extends AppCompatActivity {
 
@@ -46,6 +47,7 @@ public class chatRoom extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.chatToolbar);
         setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Chat Room");
 
         chatRecyclerView = findViewById(R.id.chatRecyclerView);
         messageInput = findViewById(R.id.messageInput);
@@ -69,6 +71,8 @@ public class chatRoom extends AppCompatActivity {
                 messageInput.setText("");
             }
         });
+
+
     }
 
     @Override

@@ -1,15 +1,17 @@
-package com.example.onlykids;
+package com.example.onlykids_mobile_application;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.onlykids.R;
+
 import java.util.List;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
     private List<ChatMessage> chatMessages;

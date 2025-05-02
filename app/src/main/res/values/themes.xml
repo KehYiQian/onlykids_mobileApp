@@ -1,17 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-<<<<<<< HEAD
-    <style name="Base.Theme.Onlykids_mobile_application" parent="Theme.Material3.DayNight.NoActionBar">
-=======
+
+    <style name="Base.Theme.Onlykids_mobile_application" parent="Theme.Material3.DayNight.NoActionBar"/>
     <style name="Base.Theme.OnlyKids" parent="Theme.Material3.DayNight.NoActionBar">
->>>>>>> abcd
+
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-
-<<<<<<< HEAD
-    <style name="Theme.Onlykids_mobile_application" parent="Base.Theme.Onlykids_mobile_application" />
-=======
-    <style name="Theme.OnlyKids" parent="Base.Theme.OnlyKids" />
->>>>>>> abcd
 </resources>

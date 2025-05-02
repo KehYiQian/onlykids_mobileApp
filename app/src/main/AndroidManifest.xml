@@ -16,13 +16,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Onlykids_mobile_application"
+        android:theme="@style/Base.Theme.Onlykids_mobile_application"
         tools:targetApi="31">
         <activity
-            android:name=".PerformanceReportActivity"
+            android:name="com.example.onlykids_mobile_application.PerformanceReportActivity"
             android:exported="false" />
         <activity
-            android:name=".Splash_screen"
+            android:name="com.example.onlykids_mobile_application.Splash_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".preclass_question"
+            android:name="com.example.onlykids_mobile_application.preclass_question"
             android:exported="false">
 
             <!-- <intent-filter> -->
@@ -42,25 +42,25 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".Retry_mistake_memo"
+            android:name="com.example.onlykids_mobile_application.Retry_mistake_memo"
             android:exported="false" />
         <activity
-            android:name=".Mistake_memo"
+            android:name="com.example.onlykids_mobile_application.Mistake_memo"
             android:exported="false" />
         <activity
-            android:name=".quizGame_result"
+            android:name="com.example.onlykids_mobile_application.quizGame_result"
             android:exported="false" />
         <activity
-            android:name=".start_quiz"
+            android:name="com.example.onlykids_mobile_application.start_quiz"
             android:exported="false"></activity>
         <activity
-            android:name=".quizGame"
+            android:name="com.example.onlykids_mobile_application.quizGame"
             android:exported="false"></activity>
         <activity
-            android:name=".chatRoom"
+            android:name="com.example.onlykids_mobile_application.chatRoom"
             android:exported="false"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.onlykids_mobile_application.MainActivity"
             android:exported="false">
 
             <!-- <intent-filter> -->
@@ -73,10 +73,10 @@
         <!-- <activity android:name=".NotesActivity" /> -->
         <!-- <activity android:name=".MistakeMemoActivity" /> -->
         <!-- <activity android:name=".PerformanceReportActivity" /> -->
-        <activity android:name=".VideoSearchActivity" />
-        <activity android:name=".NotesActivity" />
-        <activity android:name=".ViewNotesActivity" />
-        <activity android:name=".NoteChatBoxActivity" />
+        <activity android:name="com.example.onlykids_mobile_application.VideoSearchActivity" />
+        <activity android:name="com.example.onlykids_mobile_application.NotesActivity" />
+        <activity android:name="com.example.onlykids_mobile_application.ViewNotesActivity" />
+        <activity android:name="com.example.onlykids_mobile_application.NoteChatBoxActivity" />
     </application>
 
 </manifest>

@@ -10,16 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-<<<<<<< HEAD
+
         maven { url 'https://jitpack.io' }
     }
 }
-
-rootProject.name = "onlykids_mobile_application"
-=======
-    }
-}
-
 rootProject.name = "OnlyKids"
->>>>>>> abcd
 include ':app'

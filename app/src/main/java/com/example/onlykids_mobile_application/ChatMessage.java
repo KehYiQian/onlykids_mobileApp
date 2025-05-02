@@ -1,4 +1,4 @@
-package com.example.onlykids;
+package com.example.onlykids_mobile_application;
 
 public class ChatMessage {
     private String message;

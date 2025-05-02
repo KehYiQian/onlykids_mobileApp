@@ -1,14 +1,12 @@
-package com.example.onlykids_mobile_application;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import com.example.onlykids.R;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.onlykids.R;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -30,14 +28,14 @@ public class Mistake_memo_adapter extends RecyclerView.Adapter<Mistake_memo_adap
 
     @NonNull
     @Override
-    public Mistake_memo_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.mistake_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Mistake_memo_adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Mistake_entity mistake = mistakeList.get(position);
 
         long timeUsed = mistake.timeUsedMillis / 1000;

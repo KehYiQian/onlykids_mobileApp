@@ -1,6 +1,4 @@
-package com.example.onlykids_mobile_application;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.onlykids_mobile_application.onlykids_mobile_application;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,15 +6,14 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.onlykids.R;
-import com.google.android.material.button.MaterialButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.button.MaterialButton;
+import com.example.onlykids.R;
 public class MainActivity extends AppCompatActivity {
 
     private MaterialButton btnStart, btnNotes, btnMistakeMemo, btnReport, btnVideo, btnExit;
