@@ -48,7 +48,7 @@
     <string name="total_time_0_seconds">Total time: 0 seconds</string>
     <string name="awesome_job">Awesome job!</string>
     <string name="continue_to_next_level">Continue to Next Level</string>
-    <string name="back_to_home">Back to Home</string>
+    <string name="back_to_chat_room">Back to Chat Room</string>
     <string name="result_animation">result of animation</string>
 </resources>
 

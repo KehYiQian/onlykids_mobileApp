@@ -75,7 +75,7 @@
         android:id="@+id/backHomeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back_to_home"
+        android:text="@string/back_to_chat_room"
         android:textSize="18sp"
         android:backgroundTint="#2196F3"
         android:textColor="#FFFFFF"
