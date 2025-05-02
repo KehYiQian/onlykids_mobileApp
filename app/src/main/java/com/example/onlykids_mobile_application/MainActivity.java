@@ -72,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, chatRoom.class);
                         startActivity(intent);
                     });
-            //
-            //        btnNotes.setOnClickListener(v -> {
-            //            v.startAnimation(scaleAnimation);
-            //            Intent intent = new Intent(MainActivity.this, NotesActivity.class);
-            //            startActivity(intent);
-            //        });
-            //
+            
+                    btnNotes.setOnClickListener(v -> {
+                        v.startAnimation(scaleAnimation);
+                        Intent intent = new Intent(MainActivity.this, NoteChatBoxActivity.class);
+                        startActivity(intent);
+                    });
+            
                     btnMistakeMemo.setOnClickListener(v -> {
                         v.startAnimation(scaleAnimation);
                         Intent intent = new Intent(MainActivity.this, Mistake_memo.class);
